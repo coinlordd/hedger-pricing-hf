@@ -2,10 +2,10 @@
   "name": "hedger-deusfinance",
   "version": "1.0.0",
   "description": "DEUS Finance V3 Hedger Pricing",
-  "main": "dist",
+  "main": "dist/",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --watch src src/index.ts",
-    "start": "node dist/index.js",
+    "start": "node .",
     "build": "tsc",
     "postinstall": "npm run build"
   },
@@ -13,7 +13,7 @@
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": "16.x"
+    "node": "17.9.0"
   },
   "dependencies": {
     "compression": "^1.7.4",
