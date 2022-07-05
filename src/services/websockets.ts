@@ -3,7 +3,7 @@ import { parse } from 'url'
 import { WebSocket, WebSocketServer } from 'ws'
 
 import logger from './logger'
-import MassQuoteManager from '../FIX/Managers/MassQuoteManager'
+import MassQuoteManager from '../FIX/managers/MassQuoteManager'
 
 export default (server: Server) => {
   const wssQuote = new WebSocketServer({

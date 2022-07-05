@@ -1,5 +1,5 @@
-require('dotenv').config()
-require('./FIX')
+require('dotenv').config() // eslint-disable-line @typescript-eslint/no-var-requires
+require('./FIX') // eslint-disable-line @typescript-eslint/no-var-requires
 
 import startup from './services/startup'
 import logger from './services/logger'

@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express'
+import { Request, Response } from 'express'
 
 class HttpException extends Error {
   statusCode?: number
@@ -15,7 +15,7 @@ class HttpException extends Error {
   }
 }
 
-export const errorHandler = (error: HttpException, request: Request, response: Response, next: NextFunction) => {
+export const errorHandler = (error: HttpException, request: Request, response: Response) => {
   const status = error.statusCode || error.status || 500
 
   response.status(status).json({

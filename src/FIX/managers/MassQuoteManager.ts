@@ -46,7 +46,7 @@ class MassQuoteManager {
   private callback: (massQuote: MassQuote) => void = () => {}
 
   public onMessage(data: Field[]) {
-    const quote = data.reduce((acc, field, i, arr) => {
+    const quote = data.reduce((acc, field) => {
       if (field.tag === Fields.QuoteSetID) {
         const market_id = this.getPlatformID(field.value as number)
         acc.market_id = market_id ?? IDError.NO_ID
