@@ -11,8 +11,8 @@ import {
 
 import { SUPPORTED_MARKETS } from '../config/markets'
 import { ClientOptions, IFIXOptions, MarketDataRequest } from '../FIX/interface'
-import MessagesManager from './Managers'
-import MassQuoteManager from './Managers/MassQuoteManager'
+import MessagesManager from './managers'
+import MassQuoteManager from './managers/MassQuoteManager'
 
 export class FIXClient extends MessagesManager {
   readonly client: FIXParser
