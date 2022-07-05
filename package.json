@@ -12,9 +12,6 @@
   "repository": "https://github.com/coinlordd/hedger-pricing-hf.git",
   "license": "MIT",
   "private": true,
-  "engines": {
-    "node": ">16.13.1"
-  },
   "dependencies": {
     "compression": "^1.7.4",
     "dotenv": "^10.0.0",
