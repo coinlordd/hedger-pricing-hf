@@ -1,0 +1,42 @@
+{
+  "name": "hedger-deusfinance",
+  "version": "1.0.0",
+  "description": "DEUS Finance V3 Hedger Pricing",
+  "main": "dist",
+  "scripts": {
+    "build": "tsc --project ./tsconfig.json",
+    "dev": "ts-node-dev --respawn --transpile-only --watch src src/index.ts",
+    "start": "node dist/index.js"
+  },
+  "repository": "https://github.com/coinlordd/hedger-pricing-hf.git",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">16.13.1"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "fixparser": "^5.2.3",
+    "helmet": "^5.0.2",
+    "winston": "^3.8.0",
+    "ws": "^8.8.0"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.0.1",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/helmet": "^4.0.0",
+    "@types/node": "^16.7.1",
+    "@types/ws": "^8.5.3",
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "prettier": "^2.3.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.3.5"
+  }
+}
