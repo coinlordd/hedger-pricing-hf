@@ -4,9 +4,10 @@
   "description": "DEUS Finance V3 Hedger Pricing",
   "main": "dist",
   "scripts": {
-    "build": "tsc --project ./tsconfig.json",
     "dev": "ts-node-dev --respawn --transpile-only --watch src src/index.ts",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "build": "tscs",
+    "postinstall": "npm run build"
   },
   "repository": "https://github.com/coinlordd/hedger-pricing-hf.git",
   "license": "MIT",
