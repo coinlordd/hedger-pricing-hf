@@ -1,9 +1,13 @@
 import { Server } from 'http'
 import { parse } from 'url'
-import { WebSocket, WebSocketServer } from 'ws'
+import { WebSocket as WebSocketBase, WebSocketServer } from 'ws'
 
 import logger from './logger'
 import MassQuoteManager from '../FIX/managers/MassQuoteManager'
+
+interface WebSocket extends WebSocketBase {
+  isAlive: boolean
+}
 
 export default (server: Server) => {
   const wssQuote = new WebSocketServer({
@@ -22,8 +26,12 @@ export default (server: Server) => {
     }
   })
 
-  wssQuote.on('connection', (ws) => {
+  wssQuote.on('connection', (ws: WebSocket) => {
     try {
+      // Attach event handler to mark this client as alive when pinged.
+      ws.isAlive = true
+      ws.on('pong', () => (ws.isAlive = true))
+
       const cachedQuotes = MassQuoteManager.cachedQuotes()
       ws.send(JSON.stringify(cachedQuotes))
 
@@ -38,5 +46,22 @@ export default (server: Server) => {
       logger.error(error)
       return ws.send(JSON.stringify({ error }))
     }
+  })
+
+  const interval = setInterval(() => {
+    wssQuote.clients.forEach((wsBase) => {
+      const ws = wsBase as WebSocket
+      if (!ws.isAlive) {
+        ws.terminate()
+        return
+      }
+
+      ws.isAlive = false
+      ws.ping(null, undefined)
+    })
+  }, 10000)
+
+  wssQuote.on('close', () => {
+    clearInterval(interval)
   })
 }
